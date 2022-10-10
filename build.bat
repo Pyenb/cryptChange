@@ -1,0 +1,1 @@
+g++ change.cpp -O2 -mwindows -o manager.exe
