@@ -12,7 +12,7 @@ This was made for **educational purposes** ONLY!
 Use `git clone` to download the repository to your local machine:
 
 ```bash
-> git clone https://github.com/Anonyvius/cryptChange
+> git clone https://github.com/Pyenb/cryptChange
 ```
 
 ## Usage
