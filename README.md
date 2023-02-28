@@ -1,6 +1,6 @@
 # cryptChange
 
-cryptChange is a simple WIP POC programm to swap BTC addresses in the clipboard.\
+cryptChange is a simple POC programm to theoretically swap BTC addresses in the clipboard. This was made because after WannaCry, I wanted to see for myself what it takes so make a super simple malware.\
 This was made for **educational purposes** ONLY!
 
 ## Prerequisites
